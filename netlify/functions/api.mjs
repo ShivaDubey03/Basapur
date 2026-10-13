@@ -9,7 +9,6 @@ const clean = (v, n) => String(v || "").replace(/[<>]/g, "").trim().slice(0, n);
 export default async (req) => {
   const photos = getStore("ramlila-photos");
   const cards = getStore("ramlila-cards");
-  const vids = getStore("ramlila-videos");
   const url = new URL(req.url);
   const path = url.pathname.replace(/^\/api\/?/, "");
   const m = req.method;
@@ -52,20 +51,6 @@ export default async (req) => {
   if (m === "POST" && path.startsWith("like/")) {
     const r = await bump(photos, path.slice(5), (x) => (x.likes = (x.likes || 0) + 1));
     return r ? json({ likes: r.likes }) : json({ error: "not found" }, 404);
-  }
-
-  // ---------- VIDEOS (YouTube links) ----------
-  if (m === "GET" && path === "videos") {
-    return json((await list(vids)).filter((v) => isAdmin || v.approved).sort((a, b) => b.ts - a.ts));
-  }
-  if (m === "POST" && path === "videos") {
-    const b = await req.json().catch(() => ({}));
-    const yt = (String(b.url || "").match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/) || [])[1];
-    if (!yt) return json({ error: "सही YouTube लिंक डालें / Enter a valid YouTube link" }, 400);
-    const id = crypto.randomUUID();
-    const meta = { id, yt, title: clean(b.title, 80) || "रामलीला वीडियो", name: clean(b.name, 40), ts: Date.now(), approved: isAdmin || !moderate };
-    await vids.setJSON("meta/" + id, meta);
-    return json({ ok: true, approved: meta.approved });
   }
 
   // ---------- ID CARDS ----------
@@ -114,14 +99,6 @@ export default async (req) => {
   if (m === "DELETE" && path.startsWith("cards/")) {
     const id = path.slice(6);
     await cards.delete("meta/" + id); await cards.delete("img/" + id);
-    return json({ ok: true });
-  }
-  if (m === "POST" && path.startsWith("videos/approve/")) {
-    const r = await bump(vids, path.slice(15), (x) => (x.approved = true));
-    return r ? json({ ok: true }) : json({ error: "not found" }, 404);
-  }
-  if (m === "DELETE" && path.startsWith("videos/")) {
-    await vids.delete("meta/" + path.slice(7));
     return json({ ok: true });
   }
   if (m === "POST" && path.startsWith("approve/")) {

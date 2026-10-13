@@ -150,21 +150,25 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
 .look .r{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;align-items:end}
 .look .r button{margin:0}
 @media(max-width:860px){.idg{grid-template-columns:1fr}.look .r{grid-template-columns:1fr}}
-#videos{background:#2b050a}
-.vg{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
-.vd{background:#fff;color:var(--ink);border-radius:12px;overflow:hidden;box-shadow:0 10px 30px #0008}
-.vp{position:relative;aspect-ratio:16/9;background:#000 center/cover;cursor:pointer;display:grid;place-items:center}
-.vp span{width:64px;height:64px;border-radius:50%;background:#e0a82ee6;color:var(--deep);display:grid;place-items:center;font-size:26px;padding-left:5px}
-.vp iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vd .m{padding:10px 14px;font-size:15px}.vd .m b{display:block}
-.vd .row{display:flex;gap:8px;margin-top:6px}.vd .row button{border:0;background:#f7e8c0;border-radius:99px;padding:3px 12px;cursor:pointer;font:600 14px Hind}
-.vf{margin-top:34px;display:grid;grid-template-columns:1fr 1.4fr 1fr auto;gap:12px;align-items:end}
-.vf button{margin:0}
-@media(max-width:860px){.vf{grid-template-columns:1fr}}
-.ac{display:grid;grid-template-columns:110px 1fr;gap:16px;background:#fff1;border:1px solid #e0a82e66;border-radius:12px;padding:14px;margin-bottom:14px}
-.ac img{width:110px;height:140px;object-fit:cover;border-radius:8px;background:#000}
-.ac.pending{outline:2px solid #ff9d8f}
-.ac .row{display:flex;gap:8px;margin-top:8px}.ac .row button{border:0;border-radius:99px;padding:4px 14px;font:600 14px Hind;cursor:pointer;background:var(--gold)}
+.atabs{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}
+.atabs button{border:2px solid var(--gold);background:transparent;color:var(--cream);border-radius:10px;padding:10px 20px;font:700 17px Hind;cursor:pointer}
+.atabs button.on{background:var(--gold);color:var(--deep)}
+.atabs button i{font-style:normal;display:inline-block;min-width:28px;margin-left:8px;padding:0 8px;border-radius:99px;background:#c4261d;color:#fff;font-size:15px}
+.atabs button[data-t=approved] i{background:#1f8a4c}
+.ac{display:grid;grid-template-columns:130px 1fr auto;gap:20px;align-items:center;background:#fff1;border:1px solid #e0a82e66;border-left:8px solid #e0a82e;border-radius:12px;padding:16px;margin-bottom:14px}
+.ac.pending{border-left-color:#ff7a59}.ac.approved{border-left-color:#2fbf6b}
+.ac img{width:130px;height:165px;object-fit:cover;border-radius:8px;background:#000;cursor:zoom-in}
+.ac h4{font:400 24px 'Yatra One';color:var(--glow);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.ac dl{display:grid;grid-template-columns:auto 1fr;gap:2px 14px;margin-top:6px;font-size:16px}.ac dt{opacity:.7}.ac dd{margin:0;font-weight:600;word-break:break-word}
+.badge{font:700 13px Hind;border-radius:99px;padding:3px 12px;letter-spacing:.03em}
+.badge.pending{background:#ff7a59;color:#2b050a}.badge.approved{background:#2fbf6b;color:#06210f}
+.ac .acts{display:flex;flex-direction:column;gap:10px}
+.ac .acts button{border:0;border-radius:10px;padding:11px 20px;font:700 16px Hind;cursor:pointer;white-space:nowrap}
+.ac .acts .ok{background:#2fbf6b;color:#06210f}.ac .acts .del{background:transparent;color:#ff9d8f;border:2px solid #ff9d8f}
+.ac .acts button:disabled{opacity:.5;cursor:wait}
+@media(max-width:700px){.ac{grid-template-columns:100px 1fr}.ac img{width:100px;height:127px}.ac .acts{grid-column:1/-1;flex-direction:row}.ac .acts button{flex:1}}
+.wait{display:flex;gap:12px;align-items:flex-start;margin:12px 0 4px;padding:12px 14px;border-radius:10px;background:#ff7a5922;border:1px solid #ff7a59;color:#ffd9cc;font-weight:600;font-size:16px}
+.wait span:first-child{font-size:24px;line-height:1}
 
 #crop{width:min(92vw,420px);background:var(--deep);color:var(--cream);padding:18px;border-radius:14px}
 #crop h3{font-size:22px;color:var(--glow);margin-bottom:4px}
@@ -189,7 +193,6 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
   <a class="l" href="#idcard"><span class="hi">आईडी कार्ड</span><span class="en">ID card</span></a>
   <a class="l" href="#share"><span class="hi">फोटो भेजें</span><span class="en">Share</span></a>
   <a class="l" href="#gallery"><span class="hi">गैलरी</span><span class="en">Gallery</span></a>
-  <a class="l" href="#videos"><span class="hi">वीडियो</span><span class="en">Videos</span></a>
   <button id="lang" aria-label="Change language">EN / हिं</button>
 </div></nav>
 
@@ -255,6 +258,7 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
       <button class="go" id="csend" type="submit"><span class="hi">स्वीकृति के लिए भेजें</span><span class="en">Submit for approval</span></button>
       <p id="cmsg" role="status" style="margin-top:12px;font-weight:600"></p>
       <div class="cok" id="cok" hidden><small><span class="hi">आपका कार्ड नंबर</span><span class="en">Your card number</span></small><b id="cokno"></b>
+        <div class="wait"><span>⏳</span><span><span class="hi">कृपया स्वीकृति की प्रतीक्षा करें। समिति आपके आवेदन की जाँच कर रही है। स्वीकृत होने के बाद ही आप अपना कार्ड डाउनलोड कर सकेंगे।</span><span class="en">Please wait for approval. The committee is reviewing your application. You can download your card only after it is approved.</span></span></div>
         <button type="button" class="go" id="ccopy"><span class="hi">नंबर कॉपी करें</span><span class="en">Copy number</span></button>
         <p style="font-size:15px;margin-top:8px"><span class="hi">इस नंबर को सुरक्षित रखें। स्वीकृति के बाद नीचे “कार्ड डाउनलोड करें” में यह नंबर और अपना मोबाइल डालें।</span><span class="en">Keep this number safe. After approval, enter it with your mobile in “Download your card” below.</span></p></div>
     </form>
@@ -305,21 +309,15 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
   <p id="adminbar" hidden style="margin-top:20px;font-weight:700;color:#ff9d8f">Admin mode: red-outlined photos are waiting for approval.</p>
 </div></section>
 
-<section class="s" id="videos"><div class="wrap">
-  <h2 class="h rv"><span class="hi">रामलीला के वीडियो</span><span class="en">Ramlila videos</span></h2>
-  <p class="lead rv"><span class="hi">अपना वीडियो YouTube पर डालें और उसका लिंक यहाँ साझा करें। समिति की स्वीकृति के बाद वह यहाँ दिखेगा।</span><span class="en">Upload your video to YouTube and share the link here. It appears after committee approval.</span></p>
-  <div class="vg" id="vgrid"></div>
-  <form class="vf rv" id="vf">
-    <div><label for="vn"><span class="hi">आपका नाम</span><span class="en">Your name</span></label><input type="text" id="vn" maxlength="40"></div>
-    <div><label for="vu"><span class="hi">YouTube लिंक</span><span class="en">YouTube link</span></label><input type="text" id="vu" required placeholder="https://youtu.be/..."></div>
-    <div><label for="vt"><span class="hi">शीर्षक</span><span class="en">Title</span></label><input type="text" id="vt" maxlength="80"></div>
-    <button class="go" type="submit"><span class="hi">वीडियो भेजें</span><span class="en">Send video</span></button>
-  </form>
-  <p id="vmsg" role="status" style="margin-top:12px;font-weight:600"></p>
-</div></section>
-
 <section class="s" id="adm" hidden style="background:#1a0306"><div class="wrap">
-  <h2 class="h">Admin: ID card applications</h2><div id="alist"></div>
+  <h2 class="h">Admin: ID card approvals</h2>
+  <p class="lead" style="margin-bottom:0">Check each applicant's photo and details. <b>Approve</b> lets them download their HD card using their card number and mobile. <b>Delete</b> removes the application permanently.</p>
+  <div class="atabs" id="atabs">
+    <button data-t="pending" class="on">⏳ Waiting for approval<i id="anp">0</i></button>
+    <button data-t="approved">✅ Approved<i id="ana">0</i></button>
+    <button data-t="">All</button>
+  </div>
+  <div id="alist"></div>
 </div></section>
 
 <dialog id="crop"><h3><span class="hi">फोटो को सही आकार में काटें</span><span class="en">Crop your photo</span></h3>
@@ -548,7 +546,8 @@ $('#cf').onsubmit=async e=>{
   const blob=await new Promise(r=>cph.toBlob?cph.toBlob(r,'image/jpeg',.88):r(null)),fd=new FormData();
   fd.append('photo',blob,'p.jpg');['name','age','mobile','address'].forEach(f=>fd.append(f,d[f]));
   try{const j=await api('cards',{method:'POST',body:fd});
-    m.textContent=j.existing?T('आपका आवेदन पहले से दर्ज है। यह रहा आपका कार्ड नंबर।','You already applied. Here is your card number.'):T('✅ आवेदन मिल गया।','✅ Application received.');
+    m.textContent=j.existing?(j.status==='approved'?T('आपका आवेदन पहले से दर्ज और स्वीकृत है। नीचे कार्ड डाउनलोड करें।','You already applied and your card is approved. Download it below.'):T('आपका आवेदन पहले से दर्ज है। ⏳ स्वीकृति की प्रतीक्षा करें।','You already applied. ⏳ Please wait for approval.')):T('✅ आवेदन मिल गया। ⏳ अब स्वीकृति की प्रतीक्षा करें।','✅ Application received. ⏳ Now please wait for approval.');
+    $('#cok .wait').hidden=j.status==='approved';
     $('#cokno').textContent=j.no;$('#cok').hidden=false;$('#lno').value=j.no;$('#lmob').value=d.mobile;
     try{localStorage.card=JSON.stringify({no:j.no,m:d.mobile})}catch{}
   }catch(er){m.textContent=T('आवेदन नहीं भेजा जा सका: ','Could not submit: ')+er.message;m.style.color='#ff9d8f'}
@@ -568,31 +567,27 @@ $('#lbtn').onclick=async()=>{
   }catch(er){
     m.textContent=er.message.includes('not found')?T('कार्ड नहीं मिला। नंबर और मोबाइल जाँचें।','Card not found. Check the number and mobile.'):er.message}};
 
-// ===== VIDEOS =====
-async function loadV(){
-  let v=[];try{const r=await fetch('/api/videos',{headers:hdr()});v=r.ok?await r.json():[]}catch{}
-  $('#vgrid').innerHTML=v.length?v.map(x=>`<div class="vd ${x.approved?'':'pend'}"><div class="vp" data-yt="${x.yt}" style="background-image:url(https://i.ytimg.com/vi/${x.yt}/hqdefault.jpg)"><span>▶</span></div><div class="m"><b>${esc(x.title)}</b>${esc(x.name)}${adminKey?`<div class="row">${x.approved?'':`<button data-vok="${x.id}">✔</button>`}<button data-vdel="${x.id}">🗑</button></div>`:''}</div></div>`).join(''):`<div class="empty" style="grid-column:1/-1">${T('अभी कोई वीडियो नहीं।','No videos yet.')}</div>`}
-$('#vgrid').onclick=async e=>{
-  const p=e.target.closest('.vp');if(p&&!p.querySelector('iframe')){p.innerHTML=`<iframe src="https://www.youtube-nocookie.com/embed/${p.dataset.yt}?autoplay=1&rel=0" allow="autoplay;encrypted-media;fullscreen" allowfullscreen></iframe>`;return}
-  const b=e.target.closest('button');if(!b)return;
-  if(b.dataset.vok){await fetch('/api/videos/approve/'+b.dataset.vok,{method:'POST',headers:hdr()});loadV()}
-  if(b.dataset.vdel&&confirm('Delete this video?')){await fetch('/api/videos/'+b.dataset.vdel,{method:'DELETE',headers:hdr()});loadV()}};
-$('#vf').onsubmit=async e=>{e.preventDefault();const m=$('#vmsg');m.textContent=T('भेजा जा रहा है…','Sending…');
-  try{const j=await api('videos',{method:'POST',headers:{'content-type':'application/json',...hdr()},body:JSON.stringify({title:$('#vt').value,url:$('#vu').value,name:$('#vn').value})});
-    m.textContent=j.approved?T('✅ वीडियो जुड़ गया।','✅ Video added.'):T('✅ वीडियो मिल गया। स्वीकृति के बाद दिखेगा।','✅ Video received. It will show after approval.');e.target.reset();loadV()
-  }catch(er){m.textContent=T('नहीं भेजा जा सका: ','Failed: ')+er.message}};
-loadV();
-
 // ===== ADMIN: ID CARDS =====
+let AL=[],atab='pending';
 async function loadA(){
   if(!adminKey)return;$('#adm').hidden=false;
   const r=await fetch('/api/admin/cards',{headers:hdr()});if(!r.ok){$('#alist').textContent='Wrong admin key. Reload the page and try again.';return}
-  const L=await r.json();
-  $('#alist').innerHTML=L.length?L.map(c=>`<div class="ac ${c.status}"><img data-aid="${c.id}" alt=""><div><b>${esc(c.name)}</b> (${esc(c.age)}) ${c.status==='approved'?'✅ approved':'⏳ pending'}<br>📱 ${esc(c.mobile)}<br>🏠 ${esc(c.address)}<br><small>${c.no}</small><div class="row">${c.status==='approved'?'':`<button data-cok="${c.id}">✔ Approve</button>`}<button data-cdel="${c.id}">🗑 Delete</button></div></div></div>`).join(''):'<p>No ID card applications yet.</p>';
+  AL=await r.json();drawA()}
+function drawA(){
+  $('#anp').textContent=AL.filter(c=>c.status!=='approved').length;$('#ana').textContent=AL.filter(c=>c.status==='approved').length;
+  const L=AL.filter(c=>!atab||(atab==='approved'?c.status==='approved':c.status!=='approved'));
+  const none={pending:'🎉 No applications waiting for approval.',approved:'No approved cards yet.','':'No ID card applications yet.'}[atab];
+  $('#alist').innerHTML=L.length?L.map(c=>{const ok=c.status==='approved';return `<div class="ac ${ok?'approved':'pending'}"><img data-aid="${c.id}" alt="Photo of ${esc(c.name)}">
+    <div><h4>${esc(c.name)} <span class="badge ${ok?'approved':'pending'}">${ok?'✅ APPROVED':'⏳ WAITING FOR APPROVAL'}</span></h4>
+    <dl><dt>Card no.</dt><dd>${esc(c.no)}</dd><dt>Age</dt><dd>${esc(c.age)}</dd><dt>Mobile</dt><dd><a href="tel:${esc(c.mobile)}">${esc(c.mobile)}</a></dd><dt>Address</dt><dd>${esc(c.address)}</dd><dt>Applied</dt><dd>${new Date(c.ts).toLocaleString('en-IN',{dateStyle:'medium',timeStyle:'short'})}</dd></dl></div>
+    <div class="acts">${ok?'':`<button class="ok" data-cok="${c.id}">✔ Approve</button>`}<button class="del" data-cdel="${c.id}">🗑 Delete</button></div></div>`}).join(''):`<div class="empty">${none}</div>`;
   $$('#alist img').forEach(async im=>{const q=await fetch('/api/cimg/'+im.dataset.aid,{headers:hdr()});if(q.ok)im.src=URL.createObjectURL(await q.blob())})}
-$('#alist').onclick=async e=>{const b=e.target.closest('button');if(!b)return;
-  if(b.dataset.cok){await fetch('/api/cards/approve/'+b.dataset.cok,{method:'POST',headers:hdr()});loadA()}
-  if(b.dataset.cdel&&confirm('Delete this ID card?')){await fetch('/api/cards/'+b.dataset.cdel,{method:'DELETE',headers:hdr()});loadA()}};
+$('#atabs').onclick=e=>{const b=e.target.closest('button');if(!b)return;atab=b.dataset.t;$$('#atabs button').forEach(x=>x.classList.toggle('on',x===b));drawA()};
+$('#alist').onclick=async e=>{
+  const im=e.target.closest('img');if(im&&im.src){openLb(im.src,im.alt);return}
+  const b=e.target.closest('button');if(!b)return;
+  if(b.dataset.cok){b.disabled=true;b.textContent='Approving…';await fetch('/api/cards/approve/'+b.dataset.cok,{method:'POST',headers:hdr()});loadA()}
+  if(b.dataset.cdel&&confirm('Delete this ID card application permanently?')){b.disabled=true;await fetch('/api/cards/'+b.dataset.cdel,{method:'DELETE',headers:hdr()});loadA()}};
 loadA();
 </script>
 </body>
