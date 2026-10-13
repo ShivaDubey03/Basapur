@@ -23,7 +23,7 @@ a{color:inherit}:focus-visible{outline:3px solid var(--saffron);outline-offset:3
 /* preloader + progress */
 #pre{position:fixed;inset:0;z-index:100;background:var(--deep);display:grid;place-items:center;transition:opacity .8s .2s,visibility 0s 1s;color:var(--glow);font:400 clamp(30px,6vw,56px) 'Yatra One'}
 #pre.done{opacity:0;visibility:hidden}
-#pre span{animation:pulse 1.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.35; transform:scale(.96)}}
+#pre span{animation:pulse 1.4s ease-in-out infinite}@keyframes pulse{50%{opacity:.35;transform:scale(.96)}}
 #bar{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--saffron),var(--glow));z-index:60}
 /* nav */
 nav{position:fixed;top:0;left:0;right:0;z-index:50;transition:.4s;padding:6px 0}
@@ -39,7 +39,7 @@ nav button{background:var(--maroon);color:var(--glow);border:0;border-radius:99p
 .hero canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:3}
 .fig{position:absolute;bottom:-2%;height:92%;z-index:1;will-change:transform}
 .fig img{height:100%;display:block}
-.fig.ram{left:-4%}.fig.ram img{-webkit-mask-image:linear-gradient(90deg, #000 55%,transparent 98%),linear-gradient(0deg,transparent 0,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 55%,transparent 98%),linear-gradient(0deg,transparent 0,#000 18%);mask-composite:intersect}
+.fig.ram{left:-4%}.fig.ram img{-webkit-mask-image:linear-gradient(90deg,#000 55%,transparent 98%),linear-gradient(0deg,transparent 0,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 55%,transparent 98%),linear-gradient(0deg,transparent 0,#000 18%);mask-composite:intersect}
 .fig.rav{right:-3%;height:80%}.fig.rav img{-webkit-mask-image:linear-gradient(270deg,#000 55%,transparent 98%),linear-gradient(0deg,transparent 0,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(270deg,#000 55%,transparent 98%),linear-gradient(0deg,transparent 0,#000 18%);mask-composite:intersect}
 .hero .t{position:relative;z-index:2;padding:0 20px;margin-top:2vh}
 .hero .sm{font-weight:700;font-size:clamp(14px,2vw,19px);letter-spacing:.02em}
@@ -242,7 +242,7 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
 
 <section class="s" id="idcard"><div class="wrap">
   <h2 class="h rv"><span class="hi">अपना आईडी कार्ड बनाइए – मेला 2026</span><span class="en">Create Your ID Card for Mela 2026</span></h2>
-  <p class="lead rv"><span class="hi">अपनी जानकारी और फोटो भरें। आपका कार्ड अपने आप स्वीकृत होगा और आप इसे HD में डाउनलोड कर सकेंगे।</span><span class="en">Enter your details and photo. Your card is approved automatically and can then be downloaded in HD.</span></p>
+  <p class="lead rv"><span class="hi">अपनी जानकारी और फोटो भरें, कार्ड सामने तुरंत बनता दिखेगा। समिति की स्वीकृति के बाद आप इसे HD में डाउनलोड कर सकेंगे।</span><span class="en">Fill in your details and photo and the card builds live. After the committee approves it, you can download it in HD.</span></p>
   <div class="idg rv">
     <form id="cf">
       <label for="cphoto"><span class="hi">आपकी फोटो</span><span class="en">Your photo</span></label>
@@ -253,15 +253,14 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
       <input type="number" id="ca" min="1" max="120" inputmode="numeric">
       <label for="cm"><span class="hi">मोबाइल नंबर (10 अंक)</span><span class="en">Mobile number (10 digits)</span></label>
       <input type="tel" id="cm" maxlength="10" inputmode="numeric" autocomplete="tel">
-      <label class="chk" style="margin:14px 0"><input type="checkbox" id="csms" required><span><span class="hi">इस कार्ड आवेदन के अपडेट के लिए SMS पाने की सहमति देता/देती हूँ।</span><span class="en">I agree to receive an SMS about this ID card application.</span></span></label>
       <label for="cad"><span class="hi">पता</span><span class="en">Address</span></label>
       <textarea id="cad" rows="3" maxlength="140"></textarea>
-      <button class="go" id="csend" type="submit"><span class="hi">आईडी कार्ड बनाएं</span><span class="en">Create ID card</span></button>
+      <button class="go" id="csend" type="submit"><span class="hi">स्वीकृति के लिए भेजें</span><span class="en">Submit for approval</span></button>
       <p id="cmsg" role="status" style="margin-top:12px;font-weight:600"></p>
       <div class="cok" id="cok" hidden><small><span class="hi">आपका कार्ड नंबर</span><span class="en">Your card number</span></small><b id="cokno"></b>
-        <div class="wait"><span>⏳</span><span><span class="hi">आपका कार्ड स्वीकृत है। नीचे नंबर और अपने मोबाइल से कार्ड डाउनलोड करें।</span><span class="en">Your card is approved. Use the number and your mobile below to download it.</span></span></div>
+        <div class="wait"><span>⏳</span><span><span class="hi">कृपया स्वीकृति की प्रतीक्षा करें। समिति आपके आवेदन की जाँच कर रही है। स्वीकृत होने के बाद ही आप अपना कार्ड डाउनलोड कर सकेंगे।</span><span class="en">Please wait for approval. The committee is reviewing your application. You can download your card only after it is approved.</span></span></div>
         <button type="button" class="go" id="ccopy"><span class="hi">नंबर कॉपी करें</span><span class="en">Copy number</span></button>
-        <p style="font-size:15px;margin-top:8px"><span class="hi">यह नंबर SMS से भी भेजा जाएगा। नीचे कार्ड डाउनलोड करने के लिए यह नंबर और अपना मोबाइल डालें।</span><span class="en">This number will also be sent by SMS. Enter this number and your mobile below to download the card.</span></p></div>
+        <p style="font-size:15px;margin-top:8px"><span class="hi">इस नंबर को सुरक्षित रखें। स्वीकृति के बाद नीचे “कार्ड डाउनलोड करें” में यह नंबर और अपना मोबाइल डालें।</span><span class="en">Keep this number safe. After approval, enter it with your mobile in “Download your card” below.</span></p></div>
     </form>
     <div><canvas id="ccv" class="ccv"></canvas></div>
   </div>
@@ -313,13 +312,6 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
 <section class="s" id="adm" hidden style="background:#1a0306"><div class="wrap">
   <h2 class="h">Admin: ID card approvals</h2>
   <p class="lead" style="margin-bottom:0">Check each applicant's photo and details. <b>Approve</b> lets them download their HD card using their card number and mobile. <b>Delete</b> removes the application permanently.</p>
-  <div class="cok" id="cardAutoApproval">
-    <h3>⚙️ ID Card Auto Approval</h3>
-    <label class="chk" for="autoApprovalToggle"><input type="checkbox" id="autoApprovalToggle"><span>Automatically approve new ID cards</span></label>
-    <p id="autoApprovalStatus" role="status">Loading setting...</p>
-    <button type="button" class="go" id="saveAutoApproval">Save Settings</button>
-    <p id="autoApprovalMessage" role="status" style="margin-top:8px"></p>
-  </div>
   <div class="atabs" id="atabs">
     <button data-t="pending" class="on">⏳ Waiting for approval<i id="anp">0</i></button>
     <button data-t="approved">✅ Approved<i id="ana">0</i></button>
@@ -552,21 +544,16 @@ $('#cf').onsubmit=async e=>{
   if(err){m.textContent=err;m.style.color='#ff9d8f';return}
   const b=$('#csend');b.disabled=true;m.style.color='#ffd978';m.textContent=T('भेजा जा रहा है…','Submitting…');
   const blob=await new Promise(r=>cph.toBlob?cph.toBlob(r,'image/jpeg',.88):r(null)),fd=new FormData();
-  fd.append('photo',blob,'p.jpg');['name','age','mobile','address'].forEach(f=>fd.append(f,d[f]));fd.append('smsConsent',$('#csms').checked?'yes':'no');
+  fd.append('photo',blob,'p.jpg');['name','age','mobile','address'].forEach(f=>fd.append(f,d[f]));
   try{const j=await api('cards',{method:'POST',body:fd});
-    m.textContent = j.status === 'approved'
-      ? T('✅ आपका कार्ड स्वीकृत है। नीचे कार्ड नंबर से डाउनलोड करें।','✅ Your card is approved. Use the card number below to download it.')
-      : (j.existing
-        ? T('आपका आवेदन पहले से दर्ज है। ⏳ स्वीकृति की प्रतीक्षा करें।','You already applied. ⏳ Please wait for approval.')
-        : T('✅ आवेदन मिल गया। ⏳ स्वीकृति की प्रतीक्षा करें।','✅ Application received. Please wait for approval.'));
-    $('#cok .wait').hidden = j.status === 'approved';
+    m.textContent=j.existing?(j.status==='approved'?T('आपका आवेदन पहले से दर्ज और स्वीकृत है। नीचे कार्ड डाउनलोड करें।','You already applied and your card is approved. Download it below.'):T('आपका आवेदन पहले से दर्ज है। ⏳ स्वीकृति की प्रतीक्षा करें।','You already applied. ⏳ Please wait for approval.')):T('✅ आवेदन मिल गया। ⏳ अब स्वीकृति की प्रतीक्षा करें।','✅ Application received. ⏳ Now please wait for approval.');
+    $('#cok .wait').hidden=j.status==='approved';
     $('#cokno').textContent=j.no;$('#cok').hidden=false;$('#lno').value=j.no;$('#lmob').value=d.mobile;
     try{localStorage.card=JSON.stringify({no:j.no,m:d.mobile})}catch{}
   }catch(er){m.textContent=T('आवेदन नहीं भेजा जा सका: ','Could not submit: ')+er.message;m.style.color='#ff9d8f'}
   b.disabled=false};
 $('#ccopy').onclick=async()=>{try{await navigator.clipboard.writeText($('#cokno').textContent);$('#ccopy').textContent=T('कॉपी हो गया ✓','Copied ✓')}catch{}};
-const linkedCard=new URLSearchParams(location.search).get('card');if(linkedCard)$('#lno').value=linkedCard;
-try{const sc=JSON.parse(localStorage.card||'null');if(sc){if(!linkedCard)$('#lno').value=sc.no;$('#lmob').value=sc.m}}catch{}
+try{const sc=JSON.parse(localStorage.card||'null');if(sc){$('#lno').value=sc.no;$('#lmob').value=sc.m}}catch{}
 $('#lbtn').onclick=async()=>{
   const m=$('#lmsg'),no=$('#lno').value.trim().toUpperCase(),mob=$('#lmob').value.trim();
   m.style.color='#ffd978';m.textContent=T('जाँच रहे हैं…','Checking…');$('#ldl').hidden=true;
@@ -601,52 +588,7 @@ $('#alist').onclick=async e=>{
   const b=e.target.closest('button');if(!b)return;
   if(b.dataset.cok){b.disabled=true;b.textContent='Approving…';await fetch('/api/cards/approve/'+b.dataset.cok,{method:'POST',headers:hdr()});loadA()}
   if(b.dataset.cdel&&confirm('Delete this ID card application permanently?')){b.disabled=true;await fetch('/api/cards/'+b.dataset.cdel,{method:'DELETE',headers:hdr()});loadA()}};
-// ===== ADMIN: ID CARD AUTO-APPROVAL SETTING =====
-async function loadAutoApprovalSetting() {
-  if (!adminKey) return;
-  const status = $('#autoApprovalStatus');
-  const toggle = $('#autoApprovalToggle');
-  try {
-    const data = await api('admin/card-settings', { headers: hdr() });
-    toggle.checked = data.autoApproval === true;
-    status.textContent = toggle.checked ? '🟢 Auto approval is ON' : '🔴 Auto approval is OFF';
-  } catch {
-    status.textContent = 'Could not load setting. Check admin login.';
-  }
-}
-
-$('#autoApprovalToggle').onchange = () => {
-  $('#autoApprovalStatus').textContent = $('#autoApprovalToggle').checked
-    ? 'ON selected — click Save Settings'
-    : 'OFF selected — click Save Settings';
-};
-
-$('#saveAutoApproval').onclick = async () => {
-  if (!adminKey) {
-    $('#autoApprovalMessage').textContent = 'Admin login required.';
-    return;
-  }
-  const button = $('#saveAutoApproval');
-  const message = $('#autoApprovalMessage');
-  button.disabled = true;
-  message.textContent = 'Saving...';
-  try {
-    const data = await api('admin/card-settings', {
-      method: 'POST',
-      headers: { ...hdr(), 'Content-Type': 'application/json' },
-      body: JSON.stringify({ autoApproval: $('#autoApprovalToggle').checked })
-    });
-    message.textContent = data.ok ? '✅ Settings saved successfully.' : 'Could not save setting.';
-    await loadAutoApprovalSetting();
-  } catch {
-    message.textContent = '❌ Save failed. Check admin login and try again.';
-  } finally {
-    button.disabled = false;
-  }
-};
-
 loadA();
-loadAutoApprovalSetting();
 </script>
 </body>
 </html>
