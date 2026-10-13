@@ -203,7 +203,7 @@ form input[type=tel],form input[type=number],form input[type=file]{width:100%;pa
   <div class="t" data-sp=".18">
     <div class="sm"><span class="hi">आदर्श रामलीला समिति बासापुर के तत्वावधान में आयोजित</span><span class="en">Organised by Adarsh Ramlila Samiti, Basapur</span></div>
     <h1><span class="ln"><i>रामलीला</i></span><span class="ln"><i>एवं विशाल मेला</i></span><span class="ln"><i>2026</i></span></h1>
-    <div class="dt"><span class="pill"><span class="hi">रामलीला: 22, 23 एवं 24 अक्टूबर</span><span class="en">Ramlila: 22, 23 &amp; 24 Oct</span></span><span class="pill n"><span class="hi">विशाल मेला: 24 एवं 25 अक्टूबर</span><span class="en">Grand Fair: 24 &amp; 25 Oct</span></span></div><br>
+    <div class="dt"><span class="pill"><span class="hi">रामलीला: 22, 23 एवं 24 अक्टूबर</span><span class="en">Ramlila: 22, 23 &amp; 24 Oct</span></span><span class="pill n"><span class="hi">विशाल मेला: 23 एवं 24 अक्टूबर</span><span class="en">Grand Fair: 23 &amp; 24 Oct</span></span></div><br>
     <a class="cta" href="#share"><span class="hi">अपनी फोटो साझा करें</span><span class="en">Share your photo</span></a>
     <a class="cta alt" href="#schedule"><span class="hi">कार्यक्रम देखें</span><span class="en">View schedule</span></a>
   </div>
@@ -342,7 +342,7 @@ try{if(localStorage.lang==='en')setLang('en')}catch{}
 addEventListener('load',()=>setTimeout(()=>$('#pre').classList.add('done'),500));
 setTimeout(()=>$('#pre').classList.add('done'),3000);
 // marquee
-$('#mq').innerHTML=('<span>॥ जय श्रीराम ॥</span><span>रामलीला 23-25 अक्टूबर</span><span>विशाल मेला 24-25 अक्टूबर</span><span>बासापुर, जौनपुर</span>').repeat(8);
+$('#mq').innerHTML=('<span>॥ जय श्रीराम ॥</span><span>रामलीला 22-24 अक्टूबर</span><span>विशाल मेला 23-24 अक्टूबर</span><span>बासापुर, जौनपुर</span>').repeat(8);
 // reveal
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
 $$('.rv').forEach(el=>io.observe(el));
@@ -384,7 +384,7 @@ function tk(){const now=new Date(),b=$('#count');
   b.innerHTML=v.map(([n,l])=>`<div><b>${String(n).padStart(2,'0')}</b><span>${l}</span></div>`).join('')}
 tk();setInterval(tk,1000);
 // whatsapp invite
-$('#wa').onclick=e=>{e.preventDefault();open('https://wa.me/?text='+encodeURIComponent(`॥ जय श्रीराम ॥\nआदर्श रामलीला समिति बासापुर द्वारा रामलीला (23-25 अक्टूबर) एवं विशाल मेला (24-25 अक्टूबर) 2026, बासापुर, जौनपुर।\nसपरिवार पधारें!\n${location.origin}`))};
+$('#wa').onclick=e=>{e.preventDefault();open('https://wa.me/?text='+encodeURIComponent(`॥ जय श्रीराम ॥\nआदर्श रामलीला समिति बासापुर द्वारा रामलीला (22-24 अक्टूबर) एवं विशाल मेला (23-24 अक्टूबर) 2026, बासापुर, जौनपुर।\nसपरिवार पधारें!\n${location.origin}`))};
 function openLb(src,cap){$('#lbimg').src=src;$('#lbcap').textContent=cap||'';$('#lbdl').href=src;$('#lb').showModal()}
 $('#lb').onclick=e=>{if(e.target.id==='lb')e.target.close()};
 // upload
@@ -505,7 +505,7 @@ async function drawCard(c,d,ph,wm){
   // footer
   g=x.createLinearGradient(0,0,W,0);g.addColorStop(0,'#5b141e');g.addColorStop(.5,'#7a1f2b');g.addColorStop(1,'#5b141e');x.fillStyle=g;x.fillRect(0,885,W,125);x.fillStyle=GOLD;x.fillRect(0,885,W,5);
   x.fillStyle='#fff3d2';x.font='600 34px Hind';x.fillText('बासापुर, जौनपुर, उत्तर प्रदेश',70,942);
-  x.fillStyle='#f3d796';x.font='500 26px Hind';x.fillText('रामलीला: 23-25 अक्टूबर 2026   |   विशाल मेला: 24-25 अक्टूबर 2026',70,985);
+  x.fillStyle='#f3d796';x.font='500 26px Hind';x.fillText('रामलीला: 22-24 अक्टूबर 2026   |   विशाल मेला: 23-24 अक्टूबर 2026',70,985);
   x.textAlign='center';x.fillStyle='#fff3d2';x.font='italic 600 36px Hind';x.fillText('Adarsh Ram Lila Samiti',1340,925);
   x.fillStyle='#f3d796';x.fillRect(1150,938,380,2);x.font='500 22px Hind';x.fillText('अधिकृत हस्ताक्षर / Authorised Signatory',1340,972);
   // border
